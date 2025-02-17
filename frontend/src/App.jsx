@@ -16,9 +16,10 @@ import Navbar from './components/student/Navbar';
 
 
 const App = () => {
+  const isEducatorRoute = location.pathname.startsWith('/educator');
   return (
     <div className='text-default min-h-screen bg-white'>
-      <Navbar/>
+     {!isEducatorRoute && <Navbar />} 
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/course-list" element={<CourseList />} />
