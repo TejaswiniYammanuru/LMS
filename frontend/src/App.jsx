@@ -13,29 +13,33 @@ import MyCourses from './components/pages/educator/MyCourses'
 import StudentsEnrolled from './components/pages/educator/StudentsEnrolled'
 import Navbar from './components/student/Navbar';
 
-
-
 const App = () => {
   const isEducatorRoute = location.pathname.startsWith('/educator');
   return (
     <div className='text-default min-h-screen bg-white'>
-     {!isEducatorRoute && <Navbar />} 
+      {/* Remove the Navbar from here completely since Educator has its own */}
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/course-list" element={<CourseList />} />
-        <Route path="/course-list/:input" element={<CourseList/>}/>  
-        <Route path="/course-details/:id" element={<CourseDetails />} />
-        <Route path="/course/:id" element={<CourseDetails />} />
-        <Route path="/my-enrollments" element={<MyEnrollments/>}/>
-        <Route path="/player/:courseID" element={<Player/>}/>
-        <Route path="/loading/:path" element={<Loading />}/>       
-        <Route path="/educator" element={<Educator/>}>
-        <Route path="educator" element={<Dashboard/>}/>
-        <Route path="add-course" element={<AddCourse/>}/>
-        <Route path="my-courses" element={<MyCourses/>}/>
-        <Route path="students-enrolled" element={<StudentsEnrolled/>}/>
-        </Route>
+        {/* Student Routes */}
+        {!isEducatorRoute && (
+          <>
+            <Route path="/" element={<><Navbar/><Home /></>} />
+            <Route path="/course-list" element={<><Navbar/><CourseList /></>} />
+            <Route path="/course-list/:input" element={<><Navbar/><CourseList/></>}/>  
+            <Route path="/course-details/:id" element={<><Navbar/><CourseDetails /></>} />
+            <Route path="/course/:id" element={<><Navbar/><CourseDetails /></>} />
+            <Route path="/my-enrollments" element={<><Navbar/><MyEnrollments/></>}/>
+            <Route path="/player/:courseID" element={<><Navbar/><Player/></>}/>
+            <Route path="/loading/:path" element={<><Navbar/><Loading /></>}/>
+          </>
+        )}
 
+       
+        <Route path="/educator" element={<Educator/>}>
+          <Route index element={<Dashboard/>}/>
+          <Route path="add-course" element={<AddCourse/>}/>
+          <Route path="my-courses" element={<MyCourses/>}/>
+          <Route path="students-enrolled" element={<StudentsEnrolled/>}/>
+        </Route>
       </Routes>
     </div>
   )
