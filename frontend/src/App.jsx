@@ -13,6 +13,10 @@ import MyCourses from './components/pages/educator/MyCourses'
 import StudentsEnrolled from './components/pages/educator/StudentsEnrolled'
 import Navbar from './components/student/Navbar';
 import "quill/dist/quill.snow.css";
+<<<<<<< HEAD
+=======
+import AuthPage from './components/student/AuthPage';
+>>>>>>> master
 
 
 const App = () => {
@@ -21,6 +25,10 @@ const App = () => {
     <div className='text-default min-h-screen bg-white'>
       {/* Remove the Navbar from here completely since Educator has its own */}
       <Routes>
+<<<<<<< HEAD
+=======
+      <Route path="/auth" element={<AuthPage />} />
+>>>>>>> master
         {/* Student Routes */}
         {!isEducatorRoute && (
           <>
